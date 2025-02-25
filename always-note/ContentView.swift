@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var editor = EditorViewModel()
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            HeaderView(
+                decreaseFontSize: editor.decreaseFontSize,
+                increaseFontSize: editor.increaseFontSize)
+            EditorView(editor: editor)
         }
         .padding()
     }
