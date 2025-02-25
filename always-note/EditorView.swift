@@ -18,6 +18,17 @@ struct EditorView: View {
                 .cornerRadius(10)
                 .font(.system(size: editor.fontSize))
                 .padding()
+            
+            Button("Save", action: {
+                editor.save()
+            })
+            .padding()
+            .background(Color.green)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            .alert(isPresented: $editor.showAlert) {
+                Alert(title: Text("Saved"), message: Text("Your note has been saved"), dismissButton: .default(Text("OK")))
+            }
         }
     }
 }
